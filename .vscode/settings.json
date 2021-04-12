@@ -1,0 +1,9 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.fontFamily": "Fira Code",
+  "editor.cursorBlinking": "expand",
+  "workbench.sideBar.location": "right",
+  "editor.formatOnPaste": true,
+  "prettier.printWidth": 150
+}
