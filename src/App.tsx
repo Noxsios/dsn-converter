@@ -1,4 +1,5 @@
 import { EuiErrorBoundary, EuiText } from "@elastic/eui";
+import Footer from "./information/Footer";
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
           <code>Hello there.</code>
         </pre>
       </EuiText>
+      <Footer />
     </EuiErrorBoundary>
   );
 }
