@@ -1,8 +1,14 @@
+import { EuiErrorBoundary, EuiText } from "@elastic/eui";
+
 function App() {
   return (
-    <div className="App">
-      <p>Hello there.</p>
-    </div>
+    <EuiErrorBoundary>
+      <EuiText>
+        <pre>
+          <code>Hello there.</code>
+        </pre>
+      </EuiText>
+    </EuiErrorBoundary>
   );
 }
 
