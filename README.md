@@ -1,6 +1,13 @@
 # dsn-converter
 
-BLUF:
+BLUF: Just another DSN converter. What sets this apart is that it is a PWA, and has full offline capabilties with a native mobile app feel.
+
+## Prefixes
+
+Phone prefixes have been ripped, combined, and formatted from these projects:
+
+- [DSN-Converter](https://github.com/airmencoders/DSN-Converter): An IOS DSN converter.
+- [dsn_converter](https://github.com/gzd2032/dsn_converter): A web app DSN converter.
 
 ## Favicon
 
