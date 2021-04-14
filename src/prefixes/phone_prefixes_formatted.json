@@ -92,11 +92,15 @@
     "location": "Grafenwoehr/Vilsek"
   },
   "467": {
-    "number": "+49 9841-83",
+    "number": "+49 9841 83",
     "location": "Illesheim"
   },
+  "468": {
+    "number": "+49 9811 83",
+    "location": "Ansbach"
+  },
   "473": {
-    "number": "+49 9841-83",
+    "number": "+49 9841 83",
     "location": "Illesheim"
   },
   "474": {
@@ -140,11 +144,11 @@
     "location": "Baumholder"
   },
   "486": {
-    "number": "+49 6371-86",
+    "number": "+49 6371 86",
     "location": "Landstuhl (LRMC)"
   },
   "488": {
-    "number": "+49 6371-92",
+    "number": "+49 6371 92",
     "location": "Landstuhl (LRMC)"
   },
   "489": {
@@ -193,6 +197,10 @@
   },
   "541": {
     "number": "+49 6111 43 541",
+    "location": "Kaiserslautern"
+  },
+  "542": {
+    "number": "+49 6111 43 542",
     "location": "Kaiserslautern"
   },
   "544": {
