@@ -2,7 +2,9 @@ import { EuiCodeBlock, EuiFieldSearch, EuiButton } from "@elastic/eui";
 import { useState, ChangeEvent, useEffect } from "react";
 import dsn_index from "../meta/dsn_index.json";
 import _ from "lodash";
+import InputMask from "react-input-mask";
 
+const dsnRegex = new RegExp(/^([0-9]{3})-([0-9]{4})$/);
 export interface DSNPhoneObj {
   prefix: number | string;
   number: string;
@@ -26,7 +28,6 @@ const SearchBar = () => {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const text: string = e.target.value;
-
     setSearchedDSN(searchDSN(text.slice(0, 3)));
     setPhoneNum(text);
   };
@@ -37,8 +38,10 @@ const SearchBar = () => {
 
   return (
     <>
-      <EuiFieldSearch value={phoneNum} onChange={handleChange} fullWidth />
-      {phoneNum.includes("-") && !!searchedDSN && phoneNum.split("-")[1].length === 4 && (
+      <InputMask value={phoneNum} mask={"999-9999"} maskPlaceholder={null} onChange={handleChange}>
+        <EuiFieldSearch fullWidth type="tel" />
+      </InputMask>
+      {phoneNum.match(dsnRegex) && !!searchedDSN && phoneNum.split("-")[1].length === 4 && (
         <div style={{ display: "flex", justifyContent: "center", margin: "1rem" }}>
           <EuiButton href={"tel:" + searchedDSN.number + phoneNum.split("-")[1]}>📞 {searchedDSN.number + phoneNum.split("-")[1]}</EuiButton>
         </div>

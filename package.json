@@ -2,41 +2,16 @@
   "name": "dsn-converter",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@elastic/datemath": "^5.0.3",
-    "@elastic/eui": "^32.0.4",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^13.1.2",
-    "@types/jest": "^26.0.22",
-    "@types/node": "^14.14.37",
-    "@types/react": "^17.0.3",
-    "@types/react-dom": "^17.0.3",
-    "domhandler": "^4.1.0",
-    "moment": "^2.29.1",
-    "prop-types": "^15.7.2",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-jss": "^10.6.0",
-    "react-scripts": "4.0.3",
-    "typescript": "^4.2.4",
-    "workbox-core": "^6.1.5",
-    "workbox-expiration": "^6.1.5",
-    "workbox-precaching": "^6.1.5",
-    "workbox-routing": "^6.1.5",
-    "workbox-strategies": "^6.1.5"
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   },
   "browserslist": {
     "production": [
@@ -50,13 +25,40 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "cz-conventional-changelog": "^3.3.0",
-    "prettier": "^2.2.1"
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
+  "dependencies": {
+    "@elastic/datemath": "^5.0.3",
+    "@elastic/eui": "^32.0.4",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^13.1.2",
+    "domhandler": "^4.1.0",
+    "moment": "^2.29.1",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-input-mask": "^3.0.0-alpha.2",
+    "react-jss": "^10.6.0",
+    "react-scripts": "4.0.3",
+    "workbox-core": "^6.1.5",
+    "workbox-expiration": "^6.1.5",
+    "workbox-precaching": "^6.1.5",
+    "workbox-routing": "^6.1.5",
+    "workbox-strategies": "^6.1.5"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.22",
+    "@types/node": "^14.14.39",
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.3",
+    "@types/react-input-mask": "^3.0.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "prettier": "^2.2.1",
+    "typescript": "^4.2.4"
   }
 }
