@@ -1,12 +1,10 @@
 import { EuiFlexGroup, EuiFlexItem, EuiText, EuiHorizontalRule } from "@elastic/eui";
 import FooterLink from "./FooterLink";
 import { createUseStyles } from "react-jss";
-import { theme } from "../theme";
+import { theme } from "./theme";
 
 const useStyles = createUseStyles({
   container: {
-    marginTop: theme.spacing(1),
-    padding: theme.spacing(1),
     bottom: 0,
     position: "relative",
     userSelect: "none",
