@@ -40,11 +40,9 @@ const columns: EuiBasicTableColumn<DSNPhoneObj>[] = [
 function App() {
   return (
     <EuiErrorBoundary>
-      <EuiPageTemplate restrictWidth="75%">
-        <EuiText>
-          <pre>
-            <code>DSN Converter</code>
-          </pre>
+      <EuiPageTemplate>
+        <EuiText textAlign="center">
+          <h3>DSN Converter</h3>
         </EuiText>
         <br />
         <SearchBar />
