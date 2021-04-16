@@ -4,7 +4,7 @@ import { createUseStyles } from "react-jss";
 import { theme } from "./components/theme";
 const SearchBar = lazy(() => import("./components/SearchBar"));
 const Footer = lazy(() => import("./components/Footer"));
-const ConversionTable = lazy(() => import("./components/ConversionTable"));
+const Directory = lazy(() => import("./components/SearchDirectory"));
 
 const useStyles = createUseStyles({
   loading: {
@@ -41,7 +41,7 @@ function App() {
         <Suspense fallback={<Loading />}>
           <SearchBar />
           <EuiSpacer size="m" />
-          <ConversionTable />
+          <Directory />
           <EuiSpacer size="m" />
         </Suspense>
         <Suspense fallback={<div />}>
