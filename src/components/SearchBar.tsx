@@ -6,15 +6,12 @@ import InputMask from "react-input-mask";
 import { createUseStyles } from "react-jss";
 import { theme } from "./theme";
 import PhoneLink from "./PhoneLink";
+import { EuiFlexGroup, EuiFlexItem } from "@elastic/eui";
 
 const useStyles = createUseStyles({
   searchBar: {
     fontSize: "120%",
     fontFamily: "monospace",
-  },
-  centerDiv: {
-    display: "flex",
-    justifyContent: "center",
   },
 });
 
@@ -39,11 +36,18 @@ const debounceInput = _.debounce((num: any) => num, 500);
 const SearchBar = () => {
   const classes = useStyles(theme);
   const [phoneNum, setPhoneNum] = useState<string>("");
-  const [searchedDSN, setSearchedDSN] = useState<DSNPhoneObj>();
+
+  const [searchedDSN, setSearchedDSN] = useState<DSNPhoneObj>({
+    prefix: 1,
+    number: "xxxx",
+    location: "here",
+  });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const text: string = e.target.value;
-    setSearchedDSN(searchDSN(text.slice(0, 3)));
+    if (!!searchDSN(text.slice(0, 3))) {
+      setSearchedDSN(searchDSN(text.slice(0, 3)));
+    }
     setPhoneNum(text);
   };
 
@@ -53,12 +57,16 @@ const SearchBar = () => {
 
   return (
     <>
-      <div className={classes.centerDiv}>
-        <InputMask value={phoneNum} mask={"999-9999"} maskPlaceholder={null} onChange={handleChange}>
-          <EuiFieldSearch type="tel" prepend="DSN" className={classes.searchBar} />
-        </InputMask>
-      </div>
-      {phoneNum.match(dsnRegex) && !!searchedDSN && <PhoneLink commercial={searchedDSN.number} lastFour={phoneNum.split("-")[1]} />}
+      <EuiFlexGroup responsive={false}>
+        <EuiFlexItem>
+          <InputMask value={phoneNum} mask={"999-9999"} maskPlaceholder={null} onChange={handleChange}>
+            <EuiFieldSearch type="tel" prepend="DSN" className={classes.searchBar} />
+          </InputMask>
+        </EuiFlexItem>
+        <EuiFlexItem grow={false}>
+          <PhoneLink commercial={searchedDSN.number} lastFour={phoneNum.split("-")[1]} isDisabled={!(phoneNum.match(dsnRegex) && !!searchedDSN)} />
+        </EuiFlexItem>
+      </EuiFlexGroup>
     </>
   );
 };
