@@ -1,6 +1,14 @@
-# dsn-converter
+# dsn-converter [DEMO](https://dsn-converter.pages.dev/)
 
-BLUF: Just another DSN converter. What sets this apart is that it is a PWA, and has full offline capabilties with a native mobile app feel.
+__BLUF__: Just another DSN converter. What sets this apart is that it is a PWA, and has full offline capabilties with a native mobile app feel.
+
+## Built with:
+
+- [React](https://reactjs.org/)/[CRA](https://github.com/facebook/create-react-app)
+- [React-JSS](https://cssinjs.org/react-jss/)
+- [react-input-mask](https://github.com/sanniassin/react-input-mask)
+- [Elastic UI](https://elastic.github.io/eui/#/)
+- [Workbox](https://developers.google.com/web/tools/workbox)
 
 ## Prefixes
 
@@ -17,7 +25,3 @@ This favicon was generated using the following graphics from Twitter Twemoji:
 - Graphics Author: Copyright 2020 Twitter, Inc and other contributors (https://github.com/twitter/twemoji)
 - Graphics Source: https://github.com/twitter/twemoji/blob/master/assets/svg/1f4f1.svg
 - Graphics License: CC-BY 4.0 (https://creativecommons.org/licenses/by/4.0/)
-
-## Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
