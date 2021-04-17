@@ -26,6 +26,15 @@
       "react-app/jest"
     ]
   },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!src/index.js",
+      "!src/service-worker.js",
+      "!src/serviceWorkerRegistration.js",
+      "!src/react-app-env.d.ts"
+    ]
+  },
   "dependencies": {
     "@elastic/datemath": "^5.0.3",
     "@elastic/eui": "^32.1.0",
