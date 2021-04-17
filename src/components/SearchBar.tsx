@@ -1,12 +1,11 @@
-import { EuiFieldSearch } from "@elastic/eui";
+import { EuiFieldText } from "@elastic/eui";
 import { useState, ChangeEvent, useEffect } from "react";
 import dsn_index from "../meta/dsn_index.json";
-import _ from "lodash";
+import { debounce } from "lodash";
 import InputMask from "react-input-mask";
 import { createUseStyles } from "react-jss";
 import { theme } from "./theme";
 import PhoneLink from "./PhoneLink";
-import { EuiFlexGroup, EuiFlexItem } from "@elastic/eui";
 
 const useStyles = createUseStyles({
   searchBar: {
@@ -15,12 +14,10 @@ const useStyles = createUseStyles({
   },
 });
 
-const dsnRegex = new RegExp(/^([0-9]{3})-([0-9]{4})$/);
 export interface DSNPhoneObj {
   prefix: number | string;
   number: string;
   location: string;
-  fullNumber?: string;
 }
 
 const searchDSN = (prefix: number | string): DSNPhoneObj => {
@@ -31,43 +28,51 @@ const searchDSN = (prefix: number | string): DSNPhoneObj => {
   }
 };
 
-const debounceInput = _.debounce((num: any) => num, 500);
+const debounceInput = debounce((string: string) => string, 500);
+
+const blankDSN = {
+  prefix: "",
+  number: "",
+  location: "",
+};
 
 const SearchBar = () => {
   const classes = useStyles(theme);
-  const [phoneNum, setPhoneNum] = useState<string>("");
-
-  const [searchedDSN, setSearchedDSN] = useState<DSNPhoneObj>({
-    prefix: 1,
-    number: "xxxx",
-    location: "here",
-  });
+  const [dsnQuery, setDSNQuery] = useState<string>("");
+  const [searchedDSN, setSearchedDSN] = useState<DSNPhoneObj>(blankDSN);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    const text: string = e.target.value;
-    if (!!searchDSN(text.slice(0, 3))) {
-      setSearchedDSN(searchDSN(text.slice(0, 3)));
+    const dsnPrefix: string = e.target.value.slice(0, 3);
+
+    if (!!searchDSN(dsnPrefix)) {
+      setSearchedDSN(searchDSN(dsnPrefix));
+    } else {
+      setSearchedDSN(blankDSN);
     }
-    setPhoneNum(text);
+
+    setDSNQuery(e.target.value);
   };
 
   useEffect(() => {
-    debounceInput(phoneNum);
-  }, [phoneNum]);
+    debounceInput(dsnQuery);
+  }, [dsnQuery]);
 
   return (
-    <>
-      <EuiFlexGroup responsive={false}>
-        <EuiFlexItem>
-          <InputMask value={phoneNum} mask={"999-9999"} maskPlaceholder={null} onChange={handleChange}>
-            <EuiFieldSearch type="tel" prepend="DSN" className={classes.searchBar} />
-          </InputMask>
-        </EuiFlexItem>
-        <EuiFlexItem grow={false}>
-          <PhoneLink commercial={searchedDSN.number} lastFour={phoneNum.split("-")[1]} isDisabled={!(phoneNum.match(dsnRegex) && !!searchedDSN)} />
-        </EuiFlexItem>
-      </EuiFlexGroup>
-    </>
+    <InputMask value={dsnQuery} mask={"999-9999"} maskPlaceholder={null} onChange={handleChange}>
+      <EuiFieldText
+        type="tel"
+        prepend="DSN"
+        className={classes.searchBar}
+        fullWidth
+        append={
+          <PhoneLink
+            commercial={searchedDSN.number}
+            lastFour={dsnQuery.split("-")[1]}
+            isDisabled={!searchedDSN.number.length || dsnQuery.length < 8}
+          />
+        }
+      />
+    </InputMask>
   );
 };
 

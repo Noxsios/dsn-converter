@@ -9,11 +9,13 @@ const useStyles = createUseStyles({
   callBtn: {
     backgroundColor: "#7DE2D1 !important",
     borderColor: "#58a194 !important",
+    borderRadius: 0,
   },
   disabledBtn: {
     "& svg": {
       fill: "#1c1c1c",
     },
+    borderRadius: 0,
   },
 });
 
@@ -33,7 +35,7 @@ const PhoneLink = (props: PhoneLinkProps) => {
         href={`tel:${commercial}${lastFour}`}
         fill
         isDisabled={isDisabled}
-        minWidth="50%"
+        minWidth="20%"
         className={isDisabled ? classes.disabledBtn : classes.callBtn}
       >
         <svg className={classes.svg} xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
