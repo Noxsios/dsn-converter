@@ -1,4 +1,5 @@
-import { EuiFlexGroup, EuiFlexItem, EuiText, EuiHorizontalRule } from "@elastic/eui";
+import { EuiFlexGroup, EuiFlexItem, EuiHorizontalRule, EuiText } from "@elastic/eui";
+
 import FooterLink from "./FooterLink";
 import { createUseStyles } from "react-jss";
 import { theme } from "./theme";

@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+
 import SearchDirectory from "./SearchDirectory";
+import userEvent from "@testing-library/user-event";
 
 test("search bar recieves and saves input", () => {
   render(<SearchDirectory />);

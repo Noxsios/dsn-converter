@@ -1,7 +1,9 @@
-import { lazy, Suspense } from "react";
-import { EuiPageTemplate, EuiErrorBoundary, EuiText, EuiLoadingChart, EuiLoadingContent, EuiFlexItem, EuiFlexGroup } from "@elastic/eui";
+import { EuiErrorBoundary, EuiFlexGroup, EuiFlexItem, EuiLoadingChart, EuiLoadingContent, EuiPageTemplate, EuiText } from "@elastic/eui";
+import { Suspense, lazy } from "react";
+
 import { createUseStyles } from "react-jss";
 import { theme } from "./components/theme";
+
 const SearchBar = lazy(() => import("./components/SearchBar"));
 const Footer = lazy(() => import("./components/Footer"));
 const Directory = lazy(() => import("./components/SearchDirectory"));

@@ -1,19 +1,20 @@
-import { useState } from "react";
 import {
+  EuiAccordion,
+  EuiBasicTable,
+  EuiBasicTableColumn,
   EuiCallOut,
-  EuiSpacer,
+  EuiCodeBlock,
   EuiFlexGroup,
   EuiFlexItem,
   EuiSearchBar,
-  QueryType,
-  EuiCodeBlock,
-  EuiBasicTable,
-  EuiBasicTableColumn,
-  EuiAccordion,
+  EuiSpacer,
   EuiText,
+  QueryType,
 } from "@elastic/eui";
-import dsn_index from "../meta/dsn_index.json";
+
 import { DSNPhoneObj } from "./SearchBar";
+import dsn_index from "../meta/dsn_index.json";
+import { useState } from "react";
 
 const columns: EuiBasicTableColumn<DSNPhoneObj>[] = [
   {

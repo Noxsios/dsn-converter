@@ -1,11 +1,12 @@
+import { ChangeEvent, useEffect, useState } from "react";
+
 import { EuiFieldText } from "@elastic/eui";
-import { useState, ChangeEvent, useEffect } from "react";
-import dsn_index from "../meta/dsn_index.json";
-import { debounce } from "lodash";
 import InputMask from "react-input-mask";
-import { createUseStyles } from "react-jss";
-import { theme } from "./theme";
 import PhoneLink from "./PhoneLink";
+import { createUseStyles } from "react-jss";
+import { debounce } from "lodash";
+import dsn_index from "../meta/dsn_index.json";
+import { theme } from "./theme";
 
 const useStyles = createUseStyles({
   searchBar: {
