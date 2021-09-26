@@ -1,19 +1,12 @@
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
 import { ChangeEvent, useEffect, useState } from "react";
 
 import { EuiFieldText } from "@elastic/eui";
 import InputMask from "react-input-mask";
 import PhoneLink from "./PhoneLink";
-import { createUseStyles } from "react-jss";
 import { debounce } from "lodash";
 import dsn_index from "../meta/dsn_index.json";
-import { theme } from "./theme";
-
-const useStyles = createUseStyles({
-  searchBar: {
-    fontSize: "120%",
-    fontFamily: "monospace",
-  },
-});
 
 export interface DSNPhoneObj {
   prefix: number | string;
@@ -38,7 +31,6 @@ const blankDSN = {
 };
 
 const SearchBar = () => {
-  const classes = useStyles(theme);
   const [dsnQuery, setDSNQuery] = useState<string>("");
   const [searchedDSN, setSearchedDSN] = useState<DSNPhoneObj>(blankDSN);
 
@@ -63,7 +55,10 @@ const SearchBar = () => {
       <EuiFieldText
         type="tel"
         prepend="DSN"
-        className={classes.searchBar}
+        css={css`
+          font-size: 120%;
+          font-family: monospace;
+        `}
         fullWidth
         append={
           <PhoneLink
