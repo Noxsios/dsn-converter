@@ -1,43 +1,38 @@
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
 import { EuiErrorBoundary, EuiFlexGroup, EuiFlexItem, EuiLoadingChart, EuiLoadingContent, EuiPageTemplate, EuiText } from "@elastic/eui";
 import { Suspense, lazy } from "react";
-
-import { createUseStyles } from "react-jss";
-import { theme } from "./components/theme";
 
 const SearchBar = lazy(() => import("./components/SearchBar"));
 const Footer = lazy(() => import("./components/Footer"));
 const Directory = lazy(() => import("./components/SearchDirectory"));
 
-const useStyles = createUseStyles({
-  loading: {
-    display: "flex",
-    justifyContent: "center",
-    marginBottom: theme.spacing(3),
-    "& span": {
-      height: theme.spacing(4),
-      overflow: "visible",
-      "& span": {
-        width: theme.spacing(1),
-      },
-    },
-  },
-  spacer: {
-    paddingBottom: theme.spacing(1),
-  },
-});
-
 const LoadingChart = () => {
-  const classes = useStyles(theme);
   return (
-    <div className={classes.loading}>
+    <div
+      css={css`
+        display: flex;
+        justify-content: center;
+        margin-bottom: 3rem;
+        span {
+          height: 4rem;
+          overflow: visible;
+          span {
+            width: 1rem;
+          }
+        }
+      `}
+    >
       <EuiLoadingChart size="xl" />
     </div>
   );
 };
 
-function App() {
-  const classes = useStyles(theme);
+const morePadding = css`
+  padding-bottom: 1rem;
+`;
 
+function App() {
   return (
     <EuiErrorBoundary>
       <EuiPageTemplate template="centeredBody">
@@ -49,13 +44,13 @@ function App() {
           </EuiFlexItem>
           {/* SPACER */}
           <Suspense fallback={<LoadingChart />}>
-            <EuiFlexItem className={classes.spacer}>
+            <EuiFlexItem css={morePadding}>
               <SearchBar />{" "}
             </EuiFlexItem>
           </Suspense>
           {/* SPACER */}
           <Suspense fallback={<EuiLoadingContent lines={1} />}>
-            <EuiFlexItem className={classes.spacer}>
+            <EuiFlexItem css={morePadding}>
               <Directory />
             </EuiFlexItem>
           </Suspense>

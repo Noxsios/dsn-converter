@@ -4,6 +4,6 @@ import Footer from "./Footer";
 
 test("renders footer", () => {
   render(<Footer />);
-  const footerElement = screen.getByText(/SrA Harry Randazzo - aka Razzle-Dazzle ✨/i);
+  const footerElement = screen.getByText(/SrA Harry Randazzo - Razzle ✨/i);
   expect(footerElement).toBeInTheDocument();
 });
