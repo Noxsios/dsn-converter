@@ -26,7 +26,15 @@ const PhoneLink = (props: PhoneLinkProps) => {
 
   return (
     <>
-      <EuiButton href={`tel:${commercial}${lastFour}`} fill isDisabled={isDisabled} minWidth="20%" css={isDisabled ? DisabledBtnCSS : CallBtnCSS}>
+      <EuiButton
+        href={`tel:${commercial}${lastFour}`}
+        fill
+        isDisabled={isDisabled}
+        minWidth="20%"
+        css={isDisabled ? DisabledBtnCSS : CallBtnCSS}
+        aria-disabled={!isDisabled}
+        aria-label={`Call Button`}
+      >
         <svg
           css={css`
             fill: black;

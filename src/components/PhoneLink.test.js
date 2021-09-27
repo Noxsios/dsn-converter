@@ -10,4 +10,14 @@ test("phone link activates/deactivates with correct input", () => {
   };
   render(<PhoneLink {...PhoneProps} />);
   expect(screen.getByRole("link")).toHaveAttribute("href", "tel:+49 6371 478097");
+  expect(screen.getByRole("link")).toHaveAttribute("aria-disabled", "false");
+
+  const PhoneProps2 = {
+    commercial: "+49 6371 47",
+    lastFour: "8097",
+    isDisabled: true,
+  };
+  render(<PhoneLink {...PhoneProps2} />);
+  expect(screen.getByRole("link")).toHaveAttribute("href", "tel:+49 6371 478097");
+  expect(screen.getByRole("link")).toHaveAttribute("aria-disabled", "true");
 });

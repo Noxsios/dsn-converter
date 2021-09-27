@@ -67,6 +67,7 @@ const SearchBar = () => {
             isDisabled={!searchedDSN.number.length || dsnQuery.length < 8}
           />
         }
+        aria-label="DSN searchbar"
       />
     </InputMask>
   );
