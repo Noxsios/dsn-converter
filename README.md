@@ -1,5 +1,7 @@
 # dsn-converter [DEMO](https://dsn-converter.pages.dev/)
 
+[![pipeline status](https://code.il2.dso.mil/tron/products/dod-open-source/digitize/dsn-converter/badges/main/pipeline.svg)](https://code.il2.dso.mil/tron/products/dod-open-source/digitize/dsn-converter/-/commits/main) [![coverage report](https://code.il2.dso.mil/tron/products/dod-open-source/digitize/dsn-converter/badges/main/coverage.svg)](https://code.il2.dso.mil/tron/products/dod-open-source/digitize/dsn-converter/-/commits/main)
+
 __BLUF__: Just another DSN converter. What sets this apart is that it is a PWA, and has full offline capabilties with a native mobile app feel.
 
 ## Built with:
