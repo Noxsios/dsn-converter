@@ -1,13 +1,19 @@
-# dsn-converter [DEMO](https://dsn-converter.pages.dev/)
+# dsn-converter
 
 [![pipeline status](https://code.il2.dso.mil/tron/products/dod-open-source/digitize/dsn-converter/badges/main/pipeline.svg)](https://code.il2.dso.mil/tron/products/dod-open-source/digitize/dsn-converter/-/commits/main) [![coverage report](https://code.il2.dso.mil/tron/products/dod-open-source/digitize/dsn-converter/badges/main/coverage.svg)](https://code.il2.dso.mil/tron/products/dod-open-source/digitize/dsn-converter/-/commits/main)
+
+| Environment  | Link                                                                     |
+| ------------ | ------------------------------------------------------------------------ |
+| Staging      | [--> Staging <--](https://digitize.staging.dso.mil/sites/dsn-converter/) |
+| Production   | [--> Production <--](https://digitize.dod.mil/sites/dsn-converter/)      |
+| Public (old) | [--> Public <--](https://dsn-converter.pages.dev/)                       |
 
 __BLUF__: Just another DSN converter. What sets this apart is that it is a PWA, and has full offline capabilties with a native mobile app feel.
 
 ## Built with:
 
 - [React](https://reactjs.org/)/[CRA](https://github.com/facebook/create-react-app)
-- [React-JSS](https://cssinjs.org/react-jss/)
+- [Emotion](https://emotion.sh/)
 - [react-input-mask](https://github.com/sanniassin/react-input-mask)
 - [Elastic UI](https://elastic.github.io/eui/#/)
 - [Workbox](https://developers.google.com/web/tools/workbox)
@@ -18,6 +24,7 @@ Phone prefixes have been ripped, combined, and formatted from these projects:
 
 - [DSN-Converter](https://github.com/airmencoders/DSN-Converter): An IOS DSN converter.
 - [dsn_converter](https://github.com/gzd2032/dsn_converter): A web app DSN converter.
+- DISA
 
 ## Favicon
 
