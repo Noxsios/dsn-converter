@@ -14,7 +14,8 @@ import {
 
 import { DSNPhoneObj } from "./SearchBar";
 import dsn_index from "../meta/dsn_index.json";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { debounce } from "lodash";
 
 const columns: EuiBasicTableColumn<DSNPhoneObj>[] = [
   {
@@ -54,9 +55,14 @@ const columns: EuiBasicTableColumn<DSNPhoneObj>[] = [
 
 const RenderTable = (props: any) => {
   const query: QueryType = props.query;
-  const queriedItems = EuiSearchBar.Query.execute(query, dsn_index);
+  const [items, setItems] = useState<DSNPhoneObj[]>(dsn_index);
 
-  return <EuiBasicTable items={queriedItems} columns={columns} tableLayout="auto" responsive />;
+  useEffect(() => {
+    const debouncedQuery = debounce(() => setItems(EuiSearchBar.Query.execute(query, dsn_index)), 500);
+    debouncedQuery();
+  }, [query]);
+
+  return <EuiBasicTable items={items} columns={columns} tableLayout="auto" responsive />;
 };
 
 const SearchDirectory = () => {
