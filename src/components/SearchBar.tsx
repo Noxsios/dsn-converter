@@ -9,25 +9,21 @@ import { debounce } from "lodash";
 import dsn_index from "../meta/dsn_index.json";
 
 export interface DSNPhoneObj {
-  prefix: number | string;
+  prefix: number;
   number: string;
   location: string;
 }
 
-const searchDSN = (prefix: number | string): DSNPhoneObj => {
-  if (typeof prefix === "number") {
-    return dsn_index.filter((ele) => ele.prefix === prefix)[0];
-  } else {
-    return dsn_index.filter((ele) => ele.prefix === Number(prefix))[0];
-  }
-};
-
 const debounceInput = debounce((string: string) => string, 500);
 
 const blankDSN = {
-  prefix: "",
+  prefix: 0,
   number: "",
   location: "",
+};
+
+const searchDSN = (prefix: number): DSNPhoneObj => {
+  return dsn_index.find((ele) => ele.prefix === prefix) || blankDSN;
 };
 
 const SearchBar = () => {
@@ -35,13 +31,9 @@ const SearchBar = () => {
   const [searchedDSN, setSearchedDSN] = useState<DSNPhoneObj>(blankDSN);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    const dsnPrefix: string = e.target.value.slice(0, 3);
+    const dsnPrefix: number = Number(e.target.value.slice(0, 3));
 
-    if (!!searchDSN(dsnPrefix)) {
-      setSearchedDSN(searchDSN(dsnPrefix));
-    } else {
-      setSearchedDSN(blankDSN);
-    }
+    setSearchedDSN(searchDSN(dsnPrefix));
 
     setDSNQuery(e.target.value);
   };
