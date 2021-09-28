@@ -44,8 +44,8 @@ function App() {
           </EuiFlexItem>
           {/* SPACER */}
           <Suspense fallback={<LoadingChart />}>
-            <EuiFlexItem css={morePadding}>
-              <SearchBar />{" "}
+            <EuiFlexItem>
+              <SearchBar />
             </EuiFlexItem>
           </Suspense>
           {/* SPACER */}

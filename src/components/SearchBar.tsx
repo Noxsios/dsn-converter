@@ -2,7 +2,7 @@
 import { css } from "@emotion/react";
 import { ChangeEvent, useEffect, useState } from "react";
 
-import { EuiFieldText } from "@elastic/eui";
+import { EuiFieldText, EuiCodeBlock } from "@elastic/eui";
 import InputMask from "react-input-mask";
 import PhoneLink from "./PhoneLink";
 import { debounce } from "lodash";
@@ -42,26 +42,39 @@ const SearchBar = () => {
     debounceInput(dsnQuery);
   }, [dsnQuery]);
 
+  const isDisabled = !searchedDSN.number.length || dsnQuery.length < 8;
+
   return (
-    <InputMask value={dsnQuery} mask={"999-9999"} maskPlaceholder={null} onChange={handleChange}>
-      <EuiFieldText
-        type="tel"
-        prepend="DSN"
-        css={css`
-          font-size: 120%;
-          font-family: monospace;
-        `}
-        fullWidth
-        append={
-          <PhoneLink
-            commercial={searchedDSN.number}
-            lastFour={dsnQuery.split("-")[1]}
-            isDisabled={!searchedDSN.number.length || dsnQuery.length < 8}
-          />
-        }
-        aria-label="DSN searchbar"
-      />
-    </InputMask>
+    <>
+      <InputMask value={dsnQuery} mask={"999-9999"} maskPlaceholder={null} onChange={handleChange}>
+        <EuiFieldText
+          type="tel"
+          prepend="DSN"
+          css={css`
+            font-size: 120%;
+            font-family: monospace;
+          `}
+          fullWidth
+          append={<PhoneLink commercial={searchedDSN.number} lastFour={dsnQuery.split("-")[1]} isDisabled={isDisabled} />}
+          aria-label="DSN searchbar"
+        />
+      </InputMask>
+
+      {!isDisabled && (
+        <EuiCodeBlock
+          css={css`
+            margin-top: 1rem;
+            text-align: center;
+          `}
+          isCopyable
+          paddingSize="m"
+          fontSize="m"
+          language="json"
+        >
+          {searchedDSN.number + dsnQuery.split("-")[1]}
+        </EuiCodeBlock>
+      )}
+    </>
   );
 };
 
