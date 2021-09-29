@@ -21,3 +21,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# only using yarn for this repo
+# see: https://elastic.github.io/eui/#/guidelines/getting-started
+package-lock.json
