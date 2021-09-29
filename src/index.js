@@ -9,9 +9,14 @@ import App from "./App";
 import React from "react";
 import ReactDOM from "react-dom";
 
+const nonce = document.querySelector('meta[property="csp-nonce"]').content;
+
+console.log("nonce:", nonce);
+
 const cache = createCache({
   key: "dsn-converter-emotion-cache-key",
-  nonce: "DIGITIZE_CSP_NONCE",
+  nonce: nonce,
+  prepend: true,
 });
 
 ReactDOM.render(
