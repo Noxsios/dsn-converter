@@ -1,6 +1,6 @@
 # dsn-converter
 
-[![pipeline status](https://code.il2.dso.mil/tron/products/dod-open-source/digitize/dsn-converter/badges/main/pipeline.svg)](https://code.il2.dso.mil/tron/products/dod-open-source/digitize/dsn-converter/-/commits/main) [![coverage report](https://code.il2.dso.mil/tron/products/dod-open-source/digitize/dsn-converter/badges/main/coverage.svg)](https://code.il2.dso.mil/tron/products/dod-open-source/digitize/dsn-converter/-/commits/main)
+[![pipeline status](https://code.il2.dso.mil/tron/products/dod-open-source/digitize/dsn-converter/badges/master/pipeline.svg)](https://code.il2.dso.mil/tron/products/dod-open-source/digitize/dsn-converter/-/commits/master) [![coverage report](https://code.il2.dso.mil/tron/products/dod-open-source/digitize/dsn-converter/badges/master/coverage.svg)](https://code.il2.dso.mil/tron/products/dod-open-source/digitize/dsn-converter/-/commits/master)
 
 | Environment  | Link                                                                     |
 | ------------ | ------------------------------------------------------------------------ |
