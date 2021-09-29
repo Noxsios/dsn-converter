@@ -23,5 +23,6 @@ yarn-debug.log*
 yarn-error.log*
 
 # only using yarn for this repo
+# but the CI/CD configs are using npm ci
 # see: https://elastic.github.io/eui/#/guidelines/getting-started
-package-lock.json
+yarn.lock
