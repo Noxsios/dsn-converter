@@ -16,7 +16,6 @@ import {
 import { DSNPhoneObj } from "./SearchBar";
 import dsn_index from "../meta/dsn_index.json";
 import { useState, useEffect } from "react";
-import { debounce } from "lodash";
 
 const columns: EuiBasicTableColumn<DSNPhoneObj>[] = [
   {
@@ -61,8 +60,7 @@ const RenderTable = (props: any) => {
   const [pageSize, setPageSize] = useState(5);
 
   useEffect(() => {
-    const debouncedQuery = debounce(() => setItems(EuiSearchBar.Query.execute(query, dsn_index)), 500);
-    debouncedQuery();
+    setItems(EuiSearchBar.Query.execute(query, dsn_index));
   }, [query]);
 
   const onTableChange = (criteria: CriteriaWithPagination<DSNPhoneObj>) => {
