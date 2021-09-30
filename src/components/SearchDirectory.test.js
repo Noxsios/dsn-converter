@@ -7,7 +7,7 @@ afterEach(cleanup);
 
 test("search bar recieves and saves input", async () => {
   const { container } = render(<SearchDirectory />);
-  const accordionButton = container.querySelector(".euiAccordion__button");
+  const accordionButton = container.querySelector("summary");
 
   userEvent.click(accordionButton);
   const searchBar = container.querySelector("input");
@@ -21,16 +21,16 @@ test("search bar recieves and saves input", async () => {
 
 test("should expand and unexpand accordion", () => {
   const { container } = render(<SearchDirectory />);
-  const accordionButton = container.querySelector(".euiAccordion__button");
+  const accordionButton = container.querySelector("summary");
   userEvent.click(accordionButton);
-  expect(accordionButton).toHaveAttribute("aria-expanded", "true");
+  expect(container.querySelector("details")).toHaveAttribute("open", "");
   userEvent.click(accordionButton);
-  expect(accordionButton).toHaveAttribute("aria-expanded", "false");
+  expect(container.querySelector("details").open).toEqual(false);
 });
 
 test("table pagination works correctly", () => {
   const { container } = render(<SearchDirectory />);
-  const accordionButton = container.querySelector(".euiAccordion__button");
+  const accordionButton = container.querySelector("summary");
   userEvent.click(accordionButton);
   const page1 = container.querySelector("[aria-label='Page 1 of 16']");
   expect(page1.classList.contains("euiPaginationButton-isActive")).toEqual(true);
@@ -42,7 +42,7 @@ test("table pagination works correctly", () => {
 
 test("table changes number of rows per page", () => {
   const { container } = render(<SearchDirectory />);
-  const accordionButton = container.querySelector(".euiAccordion__button");
+  const accordionButton = container.querySelector("summary");
   userEvent.click(accordionButton);
   const rowsPerPageDropdown = container.querySelector("[data-test-subj='tablePaginationPopoverButton']");
   userEvent.click(rowsPerPageDropdown);
@@ -59,7 +59,7 @@ test("table changes number of rows per page", () => {
 
 test("table errors correctly", async () => {
   const { container } = render(<SearchDirectory />);
-  const accordionButton = container.querySelector(".euiAccordion__button");
+  const accordionButton = container.querySelector("summary");
   userEvent.click(accordionButton);
   const searchBar = container.querySelector("input");
   userEvent.type(searchBar, "^");
