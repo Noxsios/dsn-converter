@@ -10,6 +10,7 @@ import {
   EuiSpacer,
   EuiText,
   QueryType,
+  CriteriaWithPagination,
 } from "@elastic/eui";
 
 import { DSNPhoneObj } from "./SearchBar";
@@ -56,13 +57,36 @@ const columns: EuiBasicTableColumn<DSNPhoneObj>[] = [
 const RenderTable = (props: any) => {
   const query: QueryType = props.query;
   const [items, setItems] = useState<DSNPhoneObj[]>(dsn_index);
+  const [pageIndex, setPageIndex] = useState(0);
+  const [pageSize, setPageSize] = useState(5);
 
   useEffect(() => {
     const debouncedQuery = debounce(() => setItems(EuiSearchBar.Query.execute(query, dsn_index)), 500);
     debouncedQuery();
   }, [query]);
 
-  return <EuiBasicTable items={items} columns={columns} tableLayout="auto" responsive />;
+  const onTableChange = (criteria: CriteriaWithPagination<DSNPhoneObj>) => {
+    const { index, size } = criteria.page;
+    setPageIndex(index);
+    setPageSize(size);
+  };
+
+  const totalItemCount = items.length;
+
+  const pagination = {
+    pageIndex,
+    pageSize,
+    totalItemCount,
+    pageSizeOptions: [5, 25, 50],
+  };
+
+  const pageStart = pageIndex * pageSize;
+
+  const pageEnd = pageStart + pageSize;
+
+  const pageOfItems = items.slice(pageStart, pageEnd);
+
+  return <EuiBasicTable items={pageOfItems} columns={columns} onChange={onTableChange} pagination={pagination} tableLayout="auto" responsive />;
 };
 
 const SearchDirectory = () => {
