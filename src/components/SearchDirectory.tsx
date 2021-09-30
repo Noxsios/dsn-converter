@@ -1,5 +1,4 @@
 import {
-  EuiAccordion,
   EuiBasicTable,
   EuiBasicTableColumn,
   EuiCallOut,
@@ -16,6 +15,7 @@ import {
 import { DSNPhoneObj } from "./SearchBar";
 import dsn_index from "../meta/dsn_index.json";
 import { useState, useEffect } from "react";
+import Details from "./Details";
 
 const columns: EuiBasicTableColumn<DSNPhoneObj>[] = [
   {
@@ -132,12 +132,12 @@ const SearchDirectory = () => {
   const content = renderError() || <RenderTable query={query} />;
 
   return (
-    <EuiAccordion id="dsn-conversion-table-accordion" buttonContent="Phonebook" paddingSize="xs" arrowDisplay="right">
+    <Details title="Phonebook" id="dsn-conversion-table-accordion">
       <EuiFlexGroup alignItems="center">
         <EuiFlexItem>{renderSearch()}</EuiFlexItem>
       </EuiFlexGroup>
       {content}
-    </EuiAccordion>
+    </Details>
   );
 };
 
