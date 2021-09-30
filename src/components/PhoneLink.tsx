@@ -6,13 +6,13 @@ const DisabledBtnCSS = css`
   svg {
     fill: #1c1c1c;
   }
-  border-radius: 0;
+  border-radius: 0 !important;
 `;
 
 const CallBtnCSS = css`
   background-color: #7de2d1 !important;
   border-color: #58a194 !important;
-  border-radius: 0;
+  border-radius: 0 !important;
 `;
 
 interface PhoneLinkProps {
