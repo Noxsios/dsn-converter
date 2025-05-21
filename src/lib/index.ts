@@ -1,1 +1,11 @@
-// place files you want to import through the `$lib` alias in this folder.
+import index from "./dsn-index.json";
+
+export interface DSN {
+    prefix: number;
+    number: string;
+    location: string;
+}
+
+export const search = (prefix: number): DSN | undefined => {
+    return index.find((item: DSN) => item.prefix === prefix);
+}
