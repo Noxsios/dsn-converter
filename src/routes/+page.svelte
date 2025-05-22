@@ -3,22 +3,12 @@
 	import { Button } from '$lib/components/ui/button/index.js';
 	import * as Card from '$lib/components/ui/card/index.js';
 	import * as InputOTP from '$lib/components/ui/input-otp/index.js';
-	import { Input } from '$lib/components/ui/input/index.js';
 
 	let query = $state('');
 
 	let base = $state<string[]>([]);
 
 	let isDisabled = $derived(base.length === 0);
-
-	function handleInput(e: Event) {
-		const input = e.target as HTMLInputElement;
-		let value = input.value.replace(/\D/g, '');
-		if (value.length > 3) {
-			value = value.slice(0, 3) + '-' + value.slice(3, 7);
-		}
-		query = value;
-	}
 
 	function copy() {
 		navigator.clipboard.writeText(base.join(''));
