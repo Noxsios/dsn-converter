@@ -2,6 +2,7 @@
 	import { search } from '$lib';
 	import { Button } from '$lib/components/ui/button/index.js';
 	import * as Card from '$lib/components/ui/card/index.js';
+	import * as InputOTP from '$lib/components/ui/input-otp/index.js';
 	import { Input } from '$lib/components/ui/input/index.js';
 
 	let query = $state('');
@@ -45,24 +46,28 @@
 
 <Card.Root class="w-auto">
 	<Card.Header>
-		<Card.Title>DSN Converter</Card.Title>
+		<Card.Title class="text-center">DSN Converter</Card.Title>
 	</Card.Header>
 	<Card.Content>
 		<form>
 			<div class="grid w-full items-center gap-4">
-				<div class="flex justify-between space-y-1.5 gap-x-2">
-					<Input
-						type="tel"
-						id="dsn"
-						placeholder="XXX-XXXX"
-						aria-label="Phone number"
-						pattern={"[0-9]{3}-[0-9]{4}"}
-						required={true}
-						bind:value={query}
-						maxlength={8}
-						oninput={handleInput}
-					/>
-                    <Button variant="outline" type="submit" size="icon" href={telURI()} disabled={isDisabled}>
+				<div class="flex justify-center space-y-1.5 gap-x-2">
+                    <InputOTP.Root maxlength={7} bind:value={query} pattern="[0-9]">
+                        {#snippet children({ cells })}
+                          <InputOTP.Group>
+                            {#each cells.slice(0, 3) as cell}
+                              <InputOTP.Slot {cell} />
+                            {/each}
+                          </InputOTP.Group>
+                          <InputOTP.Separator />
+                          <InputOTP.Group>
+                            {#each cells.slice(3, 7) as cell}
+                              <InputOTP.Slot {cell} />
+                            {/each}
+                          </InputOTP.Group>
+                        {/snippet}
+                      </InputOTP.Root>
+                    <Button variant="outline" size="lg" type="submit" href={telURI()} disabled={isDisabled}>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="16"
@@ -80,7 +85,7 @@
 
             {#if base.length > 0}
             <div class="mt-4 text-center w-full">
-                <Button class="cursor-pointer w-full" variant="ghost" onclick={copy}>
+                <Button class="cursor-pointer w-full" variant="outline" onclick={copy}>
                     <monospace class="text-amber-500">{base[0]} <span class="text-cyan-500">{base[1]}</span></monospace>
                 </Button>
             </div>
