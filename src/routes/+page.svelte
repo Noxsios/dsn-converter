@@ -6,22 +6,44 @@
 
 	let query = $state('');
 
-	let phoneNumber = $state('');
+	let base = $state<string[]>([]);
 
-	let isDisabled = $derived(query === '');
+	let isDisabled = $derived(base.length === 0);
+
+	function handleInput(e: Event) {
+		const input = e.target as HTMLInputElement;
+		let value = input.value.replace(/\D/g, '');
+		if (value.length > 3) {
+			value = value.slice(0, 3) + '-' + value.slice(3, 7);
+		}
+		query = value;
+	}
+
+	function copy() {
+		navigator.clipboard.writeText(base.join(''));
+	}
+
+	function telURI(): string {
+		return `tel:${base.join('')}`;
+	}
 
 	$effect(() => {
-		const prefix = Number(query.slice(0, 3));
-		const result = search(prefix);
-		if (result && query.length >= 3) {
-			phoneNumber = result.number + query.slice(3);
-		} else {
-			phoneNumber = '';
+		const cleanQuery = query.replace(/\D/g, '');
+		if (cleanQuery.length === 7) {
+			const prefix = parseInt(cleanQuery.slice(0, 3), 10);
+			if (!isNaN(prefix)) {
+				const result = search(prefix);
+				if (result) {
+					base = [result.number, cleanQuery.slice(3)];
+					return;
+				}
+			}
 		}
+		base = [];
 	});
 </script>
 
-<Card.Root class="w-[350px]">
+<Card.Root class="w-auto">
 	<Card.Header>
 		<Card.Title>DSN Converter</Card.Title>
 	</Card.Header>
@@ -32,11 +54,15 @@
 					<Input
 						type="tel"
 						id="dsn"
-						placeholder="Phone number"
+						placeholder="XXX-XXXX"
 						aria-label="Phone number"
+						pattern={"[0-9]{3}-[0-9]{4}"}
+						required={true}
 						bind:value={query}
+						maxlength={8}
+						oninput={handleInput}
 					/>
-                    <Button variant="outline" size="icon" href={`tel:${phoneNumber}`} disabled={isDisabled}>
+                    <Button variant="outline" type="submit" size="icon" href={telURI()} disabled={isDisabled}>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="16"
@@ -51,9 +77,17 @@
                     </Button>
 				</div>
 			</div>
+
+            {#if base.length > 0}
+            <div class="mt-4 text-center w-full">
+                <Button class="cursor-pointer w-full" variant="ghost" onclick={copy}>
+                    <monospace class="text-amber-500">{base[0]} <span class="text-cyan-500">{base[1]}</span></monospace>
+                </Button>
+            </div>
+            {/if}
 		</form>
 	</Card.Content>
-	<Card.Footer>
+	<Card.Footer class="justify-center">
 		<small class="text-sm">(former) SSgt Harry "razzle" Randazzo</small>
 	</Card.Footer>
 </Card.Root>
