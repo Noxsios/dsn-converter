@@ -6,6 +6,8 @@ export interface DSN {
 	location: string;
 }
 
-export const search = (prefix: number): DSN | undefined => {
+const search = (prefix: number): DSN | undefined => {
 	return index.find((item: DSN) => item.prefix === prefix);
 };
+
+export { index, search };

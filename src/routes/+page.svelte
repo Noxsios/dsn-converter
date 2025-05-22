@@ -1,8 +1,10 @@
 <script lang="ts">
-	import { search } from '$lib';
+	import { search, index } from '$lib';
 	import { Button } from '$lib/components/ui/button/index.js';
 	import * as Card from '$lib/components/ui/card/index.js';
 	import * as InputOTP from '$lib/components/ui/input-otp/index.js';
+	import DataTable from "./data-table.svelte";
+	import { columns } from "./columns";
 
 	let query = $state('');
 
@@ -82,6 +84,7 @@
 					</Button>
 				</div>
 			{/if}
+			<DataTable data={index} columns={columns} />
 		</form>
 	</Card.Content>
 	<Card.Footer class="justify-center">
