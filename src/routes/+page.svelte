@@ -128,7 +128,9 @@
 			</Tabs.Content>
 		</Tabs.Root>
 	</div>
-	<small class="mt-2 text-center text-sm text-orange-500"
-		>(former) SSgt Harry "razzle" Randazzo</small
-	>
+	<footer class="bg-muted text-muted-foreground p-4 text-center text-sm rounded-lg">
+		<p>
+			Made with ❤️ by <a href="https://razzle.cloud" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">Harry "razzle" Randazzo</a>
+		</p>
+	</footer>
 </div>
