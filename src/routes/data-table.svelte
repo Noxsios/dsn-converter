@@ -59,9 +59,6 @@
 	<Input
 		placeholder="e.g. Ramstein"
 		value={(table.getColumn('location')?.getFilterValue() as string) ?? ''}
-		onchange={(e) => {
-			table.getColumn('location')?.setFilterValue(e.currentTarget.value);
-		}}
 		oninput={(e) => {
 			table.getColumn('location')?.setFilterValue(e.currentTarget.value);
 		}}

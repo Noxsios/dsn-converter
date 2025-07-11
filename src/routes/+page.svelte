@@ -20,17 +20,14 @@
 
 	$effect(() => {
 		const cleanQuery = query.replace(/\D/g, '');
-		if (cleanQuery.length === 7) {
-			const prefix = parseInt(cleanQuery.slice(0, 3), 10);
-			if (!isNaN(prefix)) {
-				const result = search(prefix);
-				if (result) {
-					base = [result.number, cleanQuery.slice(3)];
-					return;
-				}
-			}
+		const prefix = parseInt(cleanQuery.slice(0, 3), 10);
+		const result = search(prefix);
+
+		if (cleanQuery.length === 7 && result) {
+			base = [result.number, cleanQuery.slice(3)];
+		} else {
+			base = [];
 		}
-		base = [];
 	});
 </script>
 
