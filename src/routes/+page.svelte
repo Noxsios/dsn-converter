@@ -128,9 +128,14 @@
 			</Tabs.Content>
 		</Tabs.Root>
 	</div>
-	<footer class="bg-muted text-muted-foreground p-4 text-center text-sm rounded-lg">
+	<footer class="bg-muted text-muted-foreground rounded-lg p-4 text-center text-sm">
 		<p>
-			Made with ❤️ by <a href="https://razzle.cloud" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">Harry "razzle" Randazzo</a>
+			Made with ❤️ by <a
+				href="https://razzle.cloud"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="text-primary hover:underline">Harry "razzle" Randazzo</a
+			>
 		</p>
 	</footer>
 </div>
