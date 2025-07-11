@@ -35,7 +35,7 @@
 </script>
 
 <div
-	class="mx-auto flex h-screen w-full max-w-[95vw] flex-col gap-4 py-4 md:max-w-2xl lg:max-w-3xl xl:max-w-4xl"
+	class="mx-auto flex h-dvh w-full max-w-4xl flex-col gap-4 p-4"
 >
 	<div class="flex flex-1 flex-col">
 		<Tabs.Root value="convert" class="w-full">
@@ -50,7 +50,7 @@
 						Enter a 7-digit DSN number to dial
 					</p>
 					<div
-						class="flex justify-center transition-transform duration-300 sm:scale-110 md:scale-125 lg:scale-140"
+						class="flex justify-center scale-125"
 					>
 						<InputOTP.Root
 							maxlength={7}

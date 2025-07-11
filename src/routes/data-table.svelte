@@ -55,7 +55,7 @@
 	});
 </script>
 
-<div class="flex items-center gap-2 py-4">
+<div class="flex flex-col items-stretch gap-2 py-4 sm:flex-row sm:items-center">
 	<Input
 		placeholder="e.g. Ramstein"
 		value={(table.getColumn('location')?.getFilterValue() as string) ?? ''}
